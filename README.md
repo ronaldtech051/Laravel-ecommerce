@@ -1,500 +1,74 @@
-Contribution: 2019-10-14 10:00
+<p align="center"><a href="https://avored.com" target="_blank"><img src="https://raw.githubusercontent.com/avored/framework/main/logo.svg" width="400"></a></p>
 
-Contribution: 2019-10-16 10:00
+# AvoRed an laravel headless e commerce 
 
-Contribution: 2019-10-29 10:00
+A  headless e commerce GraphQL API which uses Laravel as a backend.
 
-Contribution: 2019-10-29 10:01
+## Installation 
 
-Contribution: 2019-10-29 10:02
+##### Backend APP setup 
 
-Contribution: 2019-10-29 10:03
+First thing first we will install laravel backend api service. First thing first we will install the laravel app. 
 
-Contribution: 2019-10-29 10:04
+    composer create-project laravel/laravel avored-backend
+    cd avored-backend
+    composer require avored/framework
+    composer require avored/dummy-data
+    composer require avored/cash-on-delivery
+    composer require avored/pickup
 
-Contribution: 2019-10-29 10:05
+Set up your .env values and CORS
 
-Contribution: 2019-10-29 10:06
+To fixed the CORS in your laravel8 app. You can open `config/cors.php` and replace the code like below in the file.
 
-Contribution: 2019-10-29 10:07
+    'allowed_origins' => ['http://localhost:8080'],
 
-Contribution: 2019-10-29 10:08
 
-Contribution: 2019-10-29 10:09
+Once the .env setup is done then we can install the AvoRed E commerce
 
-Contribution: 2019-10-30 10:00
+    php artisan avored:install
+    php artisan vendor:publish --provider="AvoRed\Framework\AvoRedServiceProvider"
+    yoursite.com/graphiql
 
-Contribution: 2019-10-30 10:01
+Once the avored/framework has been installed after that we will make sure we setup the CORS to allow access of an graphql api via any frontend.
 
-Contribution: 2019-10-30 10:02
+##### Frontend APP Setup
 
-Contribution: 2019-10-30 10:03
+    git clone https://github.com/avored/laravel-ecommerce avored-frontend
+    cd avored-frontend
+    npm install
+    npm run serve
 
-Contribution: 2019-10-30 10:04
 
-Contribution: 2019-10-30 10:05
+#### Installation via Docker
 
-Contribution: 2019-10-30 10:06
+Execute the below command:
 
-Contribution: 2019-10-30 10:07
+    git clone https://github.com/avored/docker-dev.git
+    cd docker-dev
 
-Contribution: 2019-10-30 10:08
+    git clone https://github.com/avored/laravel-ecommerce ./src/frontend
+    docker-compose up -d
+    docker-compose run --rm composer create-project laravel/laravel:8.6 ./
+    docker-compose run --rm composer require avored/framework
+    docker-compose run --rm composer require avored/dummy-data avored/cash-on-delivery avored/pickup
 
-Contribution: 2019-10-30 10:09
+Now setup `.env` file. Open a avored app .env file which is located at `./src/backend/.env` then setup your database and any other env as per your docker-compose.yml file
 
-Contribution: 2019-11-06 10:00
+    DB_HOST=mysql
+    DB_DATABASE=homestead
+    DB_USERNAME=homestead
+    DB_PASSWORD=secret
 
-Contribution: 2019-11-06 10:01
+Now we just have to install the AvoRed and create an avored admin user account
 
-Contribution: 2019-11-06 10:02
+    docker-compose run --rm artisan avored:install
+    docker-compose run --rm artisan vendor:publish --provider="AvoRed\Framework\AvoRedServiceProvider"
 
-Contribution: 2019-11-06 10:03
+Now we need to setup CORS so frontend application can receive api call from backnd.
+Open `./src/backend/config/cors.php` then replace the below line
 
-Contribution: 2019-11-06 10:04
+        'paths' => ['/graphql', 'sanctum/csrf-cookie'],
+        'allowed_origins' => ['http://localhost:8060'],
 
-Contribution: 2019-11-06 10:05
-
-Contribution: 2019-11-06 10:06
-
-Contribution: 2019-11-07 10:00
-
-Contribution: 2019-11-07 10:01
-
-Contribution: 2019-11-07 10:02
-
-Contribution: 2019-11-07 10:03
-
-Contribution: 2019-11-07 10:04
-
-Contribution: 2019-11-07 10:05
-
-Contribution: 2019-11-07 10:06
-
-Contribution: 2019-11-07 10:07
-
-Contribution: 2019-11-07 10:08
-
-Contribution: 2019-11-08 10:00
-
-Contribution: 2019-11-08 10:01
-
-Contribution: 2019-11-08 10:02
-
-Contribution: 2019-11-08 10:03
-
-Contribution: 2019-11-08 10:04
-
-Contribution: 2019-11-08 10:05
-
-Contribution: 2019-11-08 10:06
-
-Contribution: 2019-11-11 10:00
-
-Contribution: 2019-11-11 10:01
-
-Contribution: 2019-11-11 10:02
-
-Contribution: 2019-11-11 10:03
-
-Contribution: 2019-11-11 10:04
-
-Contribution: 2019-11-11 10:05
-
-Contribution: 2019-11-11 10:06
-
-Contribution: 2019-11-11 10:07
-
-Contribution: 2019-11-11 10:08
-
-Contribution: 2019-11-11 10:09
-
-Contribution: 2019-11-12 10:00
-
-Contribution: 2019-11-12 10:01
-
-Contribution: 2019-11-12 10:02
-
-Contribution: 2019-11-14 10:00
-
-Contribution: 2019-11-14 10:01
-
-Contribution: 2019-11-14 10:02
-
-Contribution: 2019-11-14 10:03
-
-Contribution: 2019-11-14 10:04
-
-Contribution: 2019-11-14 10:05
-
-Contribution: 2019-11-14 10:06
-
-Contribution: 2019-11-14 10:07
-
-Contribution: 2019-11-14 10:08
-
-Contribution: 2019-11-14 10:09
-
-Contribution: 2019-11-14 10:10
-
-Contribution: 2019-11-15 10:00
-
-Contribution: 2019-11-15 10:01
-
-Contribution: 2019-11-15 10:02
-
-Contribution: 2019-11-15 10:03
-
-Contribution: 2019-11-15 10:04
-
-Contribution: 2019-11-15 10:05
-
-Contribution: 2019-11-18 10:00
-
-Contribution: 2019-11-18 10:01
-
-Contribution: 2019-11-18 10:02
-
-Contribution: 2019-11-18 10:03
-
-Contribution: 2019-11-18 10:04
-
-Contribution: 2019-11-18 10:05
-
-Contribution: 2019-11-18 10:06
-
-Contribution: 2019-11-18 10:07
-
-Contribution: 2019-11-19 10:00
-
-Contribution: 2019-11-19 10:01
-
-Contribution: 2019-11-19 10:02
-
-Contribution: 2019-11-19 10:03
-
-Contribution: 2019-11-19 10:04
-
-Contribution: 2019-11-19 10:05
-
-Contribution: 2019-11-19 10:06
-
-Contribution: 2019-11-19 10:07
-
-Contribution: 2019-11-19 10:08
-
-Contribution: 2019-11-19 10:09
-
-Contribution: 2019-11-19 10:10
-
-Contribution: 2019-11-19 10:11
-
-Contribution: 2019-11-20 10:00
-
-Contribution: 2019-11-20 10:01
-
-Contribution: 2019-11-20 10:02
-
-Contribution: 2019-11-20 10:03
-
-Contribution: 2019-11-20 10:04
-
-Contribution: 2019-11-20 10:05
-
-Contribution: 2019-11-20 10:06
-
-Contribution: 2019-11-20 10:07
-
-Contribution: 2019-11-20 10:08
-
-Contribution: 2019-11-22 10:00
-
-Contribution: 2019-11-22 10:01
-
-Contribution: 2019-11-22 10:02
-
-Contribution: 2019-11-22 10:03
-
-Contribution: 2019-11-22 10:04
-
-Contribution: 2019-11-22 10:05
-
-Contribution: 2019-11-26 10:00
-
-Contribution: 2019-11-26 10:01
-
-Contribution: 2019-11-26 10:02
-
-Contribution: 2019-11-26 10:03
-
-Contribution: 2019-11-26 10:04
-
-Contribution: 2019-11-26 10:05
-
-Contribution: 2019-11-26 10:06
-
-Contribution: 2019-11-26 10:07
-
-Contribution: 2019-11-26 10:08
-
-Contribution: 2019-11-26 10:09
-
-Contribution: 2019-11-26 10:10
-
-Contribution: 2019-11-27 10:00
-
-Contribution: 2019-11-27 10:01
-
-Contribution: 2019-11-27 10:02
-
-Contribution: 2019-11-27 10:03
-
-Contribution: 2019-11-27 10:04
-
-Contribution: 2019-11-27 10:05
-
-Contribution: 2019-11-27 10:06
-
-Contribution: 2019-11-28 10:00
-
-Contribution: 2019-11-28 10:01
-
-Contribution: 2019-11-28 10:02
-
-Contribution: 2019-11-28 10:03
-
-Contribution: 2019-11-28 10:04
-
-Contribution: 2019-11-28 10:05
-
-Contribution: 2019-11-28 10:06
-
-Contribution: 2019-11-28 10:07
-
-Contribution: 2019-11-28 10:08
-
-Contribution: 2019-12-02 10:00
-
-Contribution: 2019-12-02 10:01
-
-Contribution: 2019-12-02 10:02
-
-Contribution: 2019-12-02 10:03
-
-Contribution: 2019-12-04 10:00
-
-Contribution: 2019-12-04 10:01
-
-Contribution: 2019-12-04 10:02
-
-Contribution: 2019-12-04 10:03
-
-Contribution: 2019-12-04 10:04
-
-Contribution: 2019-12-04 10:05
-
-Contribution: 2019-12-10 10:00
-
-Contribution: 2019-12-10 10:01
-
-Contribution: 2019-12-10 10:02
-
-Contribution: 2019-12-10 10:03
-
-Contribution: 2019-12-10 10:04
-
-Contribution: 2019-12-10 10:05
-
-Contribution: 2019-12-10 10:06
-
-Contribution: 2019-12-10 10:07
-
-Contribution: 2019-12-10 10:08
-
-Contribution: 2019-12-11 10:00
-
-Contribution: 2019-12-11 10:01
-
-Contribution: 2019-12-11 10:02
-
-Contribution: 2019-12-11 10:03
-
-Contribution: 2019-12-11 10:04
-
-Contribution: 2019-12-11 10:05
-
-Contribution: 2019-12-11 10:06
-
-Contribution: 2019-12-11 10:07
-
-Contribution: 2019-12-11 10:08
-
-Contribution: 2019-12-13 10:00
-
-Contribution: 2019-12-13 10:01
-
-Contribution: 2019-12-13 10:02
-
-Contribution: 2019-12-13 10:03
-
-Contribution: 2019-12-13 10:04
-
-Contribution: 2019-12-13 10:05
-
-Contribution: 2019-12-16 10:00
-
-Contribution: 2019-12-16 10:01
-
-Contribution: 2019-12-16 10:02
-
-Contribution: 2019-12-16 10:03
-
-Contribution: 2019-12-16 10:04
-
-Contribution: 2019-12-16 10:05
-
-Contribution: 2019-12-16 10:06
-
-Contribution: 2019-12-16 10:07
-
-Contribution: 2019-12-16 10:08
-
-Contribution: 2019-12-16 10:09
-
-Contribution: 2019-12-20 10:00
-
-Contribution: 2019-12-23 10:00
-
-Contribution: 2019-12-23 10:01
-
-Contribution: 2019-12-23 10:02
-
-Contribution: 2019-12-23 10:03
-
-Contribution: 2019-12-23 10:04
-
-Contribution: 2019-12-23 10:05
-
-Contribution: 2019-12-23 10:06
-
-Contribution: 2019-12-23 10:07
-
-Contribution: 2019-12-23 10:08
-
-Contribution: 2019-12-23 10:09
-
-Contribution: 2019-12-23 10:10
-
-Contribution: 2019-12-24 10:00
-
-Contribution: 2019-12-24 10:01
-
-Contribution: 2019-12-24 10:02
-
-Contribution: 2019-12-24 10:03
-
-Contribution: 2019-12-24 10:04
-
-Contribution: 2019-12-24 10:05
-
-Contribution: 2019-12-24 10:06
-
-Contribution: 2019-12-24 10:07
-
-Contribution: 2019-12-24 10:08
-
-Contribution: 2019-12-24 10:09
-
-Contribution: 2019-12-24 10:10
-
-Contribution: 2019-12-24 10:11
-
-Contribution: 2019-12-26 10:00
-
-Contribution: 2019-12-26 10:01
-
-Contribution: 2019-12-26 10:02
-
-Contribution: 2019-12-26 10:03
-
-Contribution: 2019-12-26 10:04
-
-Contribution: 2019-12-26 10:05
-
-Contribution: 2019-12-26 10:06
-
-Contribution: 2019-12-26 10:07
-
-Contribution: 2019-12-26 10:08
-
-Contribution: 2019-12-30 10:00
-
-Contribution: 2019-12-30 10:01
-
-Contribution: 2019-12-30 10:02
-
-Contribution: 2019-12-31 10:00
-
-Contribution: 2019-12-31 10:01
-
-Contribution: 2020-01-01 10:00
-
-Contribution: 2020-01-02 10:00
-
-Contribution: 2020-01-02 10:01
-
-Contribution: 2020-01-02 10:02
-
-Contribution: 2020-01-02 10:03
-
-Contribution: 2020-01-02 10:04
-
-Contribution: 2020-01-02 10:05
-
-Contribution: 2020-01-02 10:06
-
-Contribution: 2020-01-02 10:07
-
-Contribution: 2020-01-02 10:08
-
-Contribution: 2020-01-02 10:09
-
-Contribution: 2020-01-03 10:00
-
-Contribution: 2020-01-03 10:01
-
-Contribution: 2020-01-03 10:02
-
-Contribution: 2020-01-03 10:03
-
-Contribution: 2020-01-03 10:04
-
-Contribution: 2020-01-03 10:05
-
-Contribution: 2020-01-03 10:06
-
-Contribution: 2020-01-03 10:07
-
-Contribution: 2020-01-09 10:00
-
-Contribution: 2020-01-09 10:01
-
-Contribution: 2020-01-09 10:02
-
-Contribution: 2020-01-09 10:03
-
-Contribution: 2020-01-09 10:04
-
-Contribution: 2020-01-09 10:05
-
-Contribution: 2020-01-09 10:06
-
-Contribution: 2020-01-09 10:07
-
-Contribution: 2020-01-09 10:08
-
-Contribution: 2020-01-09 10:09
-
-Contribution: 2020-01-09 10:10
-
-Contribution: 2020-01-09 10:11
-
+That's It. Now you can visit `http://localhost:8060` for frontend and for backend you can visit `http://localhost:8050/admin`
